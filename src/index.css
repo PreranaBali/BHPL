@@ -1,0 +1,40 @@
+/* --- Project Gallery Custom Styles --- */
+
+@import "tailwindcss";
+
+/* --- Custom Scrollbar for Chrome, Safari and Opera --- */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+}
+
+/* The Track (Background) */
+::-webkit-scrollbar-track {
+  background: #B8E3E9; /* Theme Ice */
+}
+
+/* The Handle (The moving part) */
+::-webkit-scrollbar-thumb {
+  background-color: #4F7C82; /* Theme Teal */
+  border-radius: 20px;       /* Makes it round */
+  border: 3px solid #B8E3E9; /* Creates a 'padding' effect around the thumb */
+}
+
+/* The Handle on Hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0B2E33; /* Theme Deep */
+}
+
+/* --- Support for Firefox --- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #4F7C82 #B8E3E9; /* thumb and track */
+}
+/* Hide default cursor everywhere */
+* {
+  cursor: none !important;
+}
+
+/* Ensure links/buttons don't force it back */
+a, button, input, select, textarea {
+  cursor: none !important;
+}

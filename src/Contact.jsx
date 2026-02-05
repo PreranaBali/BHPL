@@ -112,8 +112,8 @@ const Contact = () => {
                 { 
                   icon: <MapPin />, 
                   title: "Headquarters", 
-                  text: "5th Block, Jayanagar, Bangalore India",
-                  subtext: "Visit us for a coffee"
+                  text: "BHPL PVT LTD #12,15th cross, Outer Ring Rd, next to sri sai motors, sarakki village, J. P. Nagar, Bengaluru, Karnataka 560078",
+                  
                 },
                 { 
                   icon: <Phone />, 

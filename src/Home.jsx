@@ -161,7 +161,7 @@ const FeaturesSection = () => {
           {[
             { title: "Design Approach", icon: <PenTool />, desc: "Innovation meets sustainability." },
             { title: "Smart Financing", icon: <CheckCircle2 />, desc: "Zero-interest solutions tailored for you." },
-            { title: "Seamless Mgmt", icon: <Layers />, desc: "Coordination from planning to execution." }
+            { title: "Seamless Management", icon: <Layers />, desc: "Coordination from planning to execution." }
           ].map((item, i) => (
             <motion.div 
               key={i}
@@ -173,7 +173,7 @@ const FeaturesSection = () => {
                 {React.cloneElement(item.icon, { size: 32 })}
               </div>
               <h3 className="text-2xl font-bold text-[#0B2E33] mb-3">{item.title}</h3>
-              <p className="text-[#4F7C82] leading-relaxed">{item.desc}</p>
+              <p className="text-[#018790] leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -212,10 +212,10 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
         >
           <h4 className="text-[#bf953f] font-bold uppercase tracking-widest mb-2">About Us</h4>
-          <h2 className="text-5xl font-bold text-[#0B2E33] mb-6 leading-tight">
+          <h2 className="text-5xl font-bold text-[#F5FBE6] mb-6 leading-tight">
             Building Innovative Spaces
           </h2>
-          <p className="text-[#4F7C82] text-lg mb-8 leading-relaxed">
+          <p className="text-[#018790] text-lg mb-8 leading-relaxed">
             Specializing in creating affordable dream homes. By leveraging cutting-edge VR technology, 
             we offer an immersive experience that allows you to explore and visualize your future home.
           </p>
@@ -226,7 +226,7 @@ const AboutSection = () => {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-3 text-[#0B2E33] font-medium"
+                className="flex items-center gap-3 text-[#249E94] font-medium"
               >
                 <CheckCircle2 className="text-[#bf953f]" /> {item}
               </motion.li>
@@ -311,13 +311,13 @@ const ProjectsSection = () => {
           
           {/* Tabs Navigation */}
           <div className="lg:col-span-4 flex flex-col gap-2">
-            <h4 className="text-[#4F7C82] font-bold uppercase mb-6 tracking-widest">Latest Works</h4>
+            <h4 className="text-[#249E94] font-bold uppercase mb-6 tracking-widest">Latest Works</h4>
             {projects.map((project, idx) => (
               <div key={idx} className="relative">
                 <button
                   onClick={() => setActiveTab(idx)}
                   className={`relative z-10 w-full text-left p-6 text-xl font-bold transition-all duration-500 flex items-center group ${
-                    activeTab === idx ? "text-[#B8E3E9] translate-x-2" : "text-[#4F7C82] hover:text-[#0B2E33] hover:translate-x-1"
+                    activeTab === idx ? "text-[#EDEDCE] translate-x-2" : "text-[#249E94] hover:text-[#0B2E33] hover:translate-x-1"
                   }`}
                 >
                   <span className={`mr-4 text-sm font-mono transition-opacity duration-300 ${activeTab === idx ? "opacity-100" : "opacity-40"}`}>
@@ -516,7 +516,7 @@ const TeamSection = () => (
   <section className="py-24">
     <div className="container mx-auto px-4">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-[#0B2E33]">Directors</h2>
+        <h2 className="text-4xl font-bold text-[#018790]">Directors</h2>
       </div>
       <div className="flex flex-wrap justify-center gap-10">
         {[

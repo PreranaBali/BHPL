@@ -103,6 +103,8 @@ const VideoSection = () => {
     setIsPlaying(false);
   };
 
+   
+
   return (
     <section className="relative w-full h-[80vh] md:h-screen bg-[#0B2E33] overflow-hidden group rounded-t-[3rem] mt-20 shadow-2xl">
       <video 
@@ -208,6 +210,15 @@ const Project = () => {
     ? projectsData 
     : projectsData.filter(project => project.category === filter);
 
+  const tabs = [
+                { id: 1, label: "01. Master Plan - Zoning", img: "/Geotechnical/project1.png"},
+                { id: 2, label: "02. Form Development", img:  "/Geotechnical/project2.png" },
+                { id: 3, label: "03. Survey Plan", img:  "/Geotechnical/project3.png" },
+                { id: 4, label: "04. Concept Design", img:  "/Geotechnical/project4.png" }
+              ]
+
+  const activeTabData = tabs.find(tab => tab.id===activeTab);
+
   return (
     <div ref={containerRef} className="font-sans antialiased overflow-x-hidden min-h-screen bg-[#B8E3E9] text-[#0B2E33]">
       
@@ -272,13 +283,9 @@ const Project = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Tabs List */}
+           
             <div className="lg:col-span-4 flex flex-col space-y-3">
-              {[
-                { id: 1, label: "01. Master Plan - Zoning" },
-                { id: 2, label: "02. Form Development" },
-                { id: 3, label: "03. Survey Plan" },
-                { id: 4, label: "04. Concept Design" }
-              ].map((tab) => (
+              {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
@@ -307,7 +314,7 @@ const Project = () => {
                   <div className="h-[350px] rounded-2xl overflow-hidden shadow-lg border border-[#bf953f]/30">
                     <img 
                       className="h-full w-full object-cover transform hover:scale-110 transition-transform duration-700" 
-                      src={`img/${activeTab}.svg`} 
+                      src={activeTabData?.img} 
                       alt="Plan" 
                     />
                   </div>

@@ -236,7 +236,7 @@ const About = () => {
                 { img: "john sir.svg", name: "Mr. John", role: "North Karnataka Sales" },
                 { img: "gopi.png", name: "Mr. Gopi Tanniru", role: "Civil Engineer" },
                 { img: "praveen.jpg", name: "Mr. Praveen Kumar", role: "Site Engineer" },
-                { img: "andha.png", name: "Mr. Anand Kumar", role: "Sales Manager" },
+                { img: "SavithaAjith.png", name: "Mrs. SavithaAjith", role: "Architect(BE)" },
             ].map((member, index) => (
                <motion.div 
                  key={index}

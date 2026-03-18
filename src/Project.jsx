@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -39,9 +39,9 @@ const projectsData = [
     area: "200,000+ sq.ft",
     year: "2024",
     description: "Comprehensive institutional project including multi-specialty hospital, CBSE school, pharmacy and nursing institute.",
-    mainImage: "img/4.svg",
+    mainImage: "https://img.freepik.com/premium-photo/realistic-construction-site-photos_811396-75893.jpg",
     images: [
-      "img/project/hospital/IMG-20250313-WA0012.jpg",
+      "https://img.freepik.com/premium-photo/realistic-construction-site-photos_811396-75893.jpg",
       "img/project/hospital/IMG-20250425-WA0002.jpg",
       "img/project/hospital/IMG-20250425-WA0005.jpg",
       "img/project/hospital/IMG-20250425-WA0009.jpg",
@@ -93,7 +93,7 @@ const projectsData = [
     location: "Ramaneshwaram",
     area: "Large Scale Public Space",
     year: "Ongoing",
-    description: "Designed for Bendakaluru Housing Private Limited (BHPL), Mythology Park at Ramaneshwaram integrates vernacular and modern architecture. The site features modular earth units, vast interconnected woven bamboo canopies, and a central hybrid meditation spire.",
+    description: "Our flagship project at Bendakaluru Housing Private Limited (BHPL), Mythology Park at Ramaneshwaram integrates vernacular and modern architecture. The site features modular earth units, vast interconnected woven bamboo canopies, and a central hybrid meditation spire.",
     mainImage: "img/project/mythology/m3.png", 
     images: [
       "img/project/mythology/m1.png",      
@@ -185,9 +185,21 @@ const Project = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeTab, setActiveTab] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // State for the expanding interior accordion
+  const [hoveredInterior, setHoveredInterior] = useState(0);
 
   // Find the Mythology project to feature it
   const mythologyProject = projectsData.find(p => p.id === 5);
+
+  // Interior Section Data (5 precise divisions)
+  const interiorItems = [
+    { id: 0, type: 'video', src: 'img/interior/iv1.mp4', title: 'Immersive Walkthrough', subtitle: 'Experience the space' },
+    { id: 1, type: 'image', src: 'img/interior/i1.jpeg', title: 'Custom Wardrobes', subtitle: 'Bespoke Woodwork & Seating' },
+    { id: 2, type: 'image', src: 'img/interior/i2.jpeg', title: 'Living Spaces', subtitle: 'Modern Entertainment Units' },
+    { id: 3, type: 'image', src: 'img/interior/i4.jpeg', title: 'Wall Cupboards', subtitle: 'Seamless Storage Solutions' }, // i4 Wall Cupboard
+    { id: 4, type: 'image', src: 'img/interior/i3.jpeg', title: 'Modular Kitchens', subtitle: 'Functional & Stylish Design' }, // i3 Modular Kitchen
+  ];
 
   // --- GSAP ANIMATIONS ---
   useLayoutEffect(() => {
@@ -249,7 +261,7 @@ const Project = () => {
   return (
     <div ref={containerRef} className="font-sans antialiased overflow-x-hidden min-h-screen bg-[#B8E3E9] text-[#0B2E33]">
       
-      {/* --- HERO SECTION (MATCHING ABOUT/SERVICE) --- */}
+      {/* --- HERO SECTION --- */}
       <section className="relative w-full h-[60vh] flex items-center justify-center overflow-hidden">
         {/* Animated Gold Dust Background */}
         <div className="absolute inset-0 bg-[#0B2E33]">
@@ -310,16 +322,12 @@ const Project = () => {
               
               {/* Text Content */}
               <div className="lg:w-1/2 text-white">
-                
-        
                 <h2 className="text-5xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B8E3E9]">
                   {mythologyProject.title}
                 </h2>
-                
                 <p className="text-[#B8E3E9]/80 text-lg leading-relaxed mb-8 max-w-xl">
                   {mythologyProject.description}
                 </p>
-                
                 <div className="flex items-center gap-8 mb-10">
                   <div>
                     <p className="text-[#bf953f] text-sm uppercase tracking-wider mb-1">Location</p>
@@ -331,7 +339,6 @@ const Project = () => {
                     <p className="font-semibold text-lg">{mythologyProject.area}</p>
                   </div>
                 </div>
-
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -347,12 +354,10 @@ const Project = () => {
               <div className="lg:w-1/2 w-full">
                 <div className="grid grid-cols-2 gap-4 md:gap-6 items-center">
                   <div className="space-y-4 md:space-y-6 translate-y-8">
-                    {/* Image 1 */}
                     <div className="rounded-3xl overflow-hidden shadow-2xl h-48 md:h-64 border border-white/10 relative group">
                       <img src={mythologyProject.images[0]} alt="Glimpse 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-[#0B2E33]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    {/* Image 2 */}
                     <div className="rounded-3xl overflow-hidden shadow-2xl h-64 md:h-80 border border-white/10 relative group">
                       <img src={mythologyProject.images[1]} alt="Glimpse 2" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-[#0B2E33]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -360,12 +365,10 @@ const Project = () => {
                   </div>
                   
                   <div className="space-y-4 md:space-y-6 -translate-y-8">
-                    {/* Image 3 */}
                     <div className="rounded-3xl overflow-hidden shadow-2xl h-64 md:h-80 border border-white/10 relative group">
                       <img src={mythologyProject.images[2]} alt="Glimpse 3" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-[#0B2E33]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    {/* Image 4 */}
                     <div className="rounded-3xl overflow-hidden shadow-2xl h-48 md:h-64 border border-white/10 relative group bg-[#bf953f]/20 flex items-center justify-center cursor-pointer" onClick={() => openModal(mythologyProject)}>
                       {mythologyProject.images[3] ? (
                         <>
@@ -396,8 +399,6 @@ const Project = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Tabs List */}
-           
             <div className="lg:col-span-4 flex flex-col space-y-3">
               {tabs.map((tab) => (
                 <button
@@ -414,7 +415,6 @@ const Project = () => {
               ))}
             </div>
 
-            {/* Tab Content Display */}
             <div className="lg:col-span-8 bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] shadow-xl border border-white">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -440,14 +440,12 @@ const Project = () => {
                       {activeTab === 4 && "CONCEPT DESIGN"}
                     </h3>
                     <div className="h-1 w-20 bg-[#bf953f] mb-6 rounded-full" />
-                    
                     <p className="text-[#4F7C82] mb-6 leading-relaxed">
                       {activeTab === 1 && "A long-term strategy for organized city or regional development, covering land use, infrastructure, and sustainability."}
                       {activeTab === 2 && "Focuses on shaping the physical environment by designing spaces that are functional, aesthetically appealing, and sustainable."}
                       {activeTab === 3 && "A detailed document outlining boundaries, dimensions, and features of a specific land parcel using precise measurements."}
                       {activeTab === 4 && "Overview for Hirekalmatha Institutions & Hospital. Includes Multi-speciality hospital, CBSE school, Pharmacy and nursing institute."}
                     </p>
-
                     <ul className="space-y-3">
                       {["Strategic Planning", "Sustainability Integration", "Future Proofing"].map((item, i) => (
                         <li key={i} className="flex items-center text-[#0B2E33] font-medium">
@@ -472,7 +470,6 @@ const Project = () => {
             <h1 className="text-4xl font-bold text-[#0B2E33]">Completed & Ongoing</h1>
           </div>
 
-          {/* Filters */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {['all', 'residential','commercial'].map((cat) => (
               <button
@@ -489,11 +486,7 @@ const Project = () => {
             ))}
           </div>
 
-          {/* Grid */}
-          <motion.div 
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
               {filteredProjects.map((project) => (
                 <motion.div
@@ -514,7 +507,6 @@ const Project = () => {
                     />
                   </div>
                   
-                  {/* Overlay */}
                   <div className="absolute inset-0 bg-[#0B2E33]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
                     <h3 className="text-xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                       {project.title}
@@ -527,7 +519,6 @@ const Project = () => {
                     </div>
                   </div>
 
-                  {/* Badge */}
                   <div className="absolute top-4 right-4 bg-[#bf953f] text-[#0B2E33] text-xs font-bold px-3 py-1 rounded-full shadow-md">
                     {project.displayCategory}
                   </div>
@@ -535,6 +526,87 @@ const Project = () => {
               ))}
             </AnimatePresence>
           </motion.div>
+        </div>
+      </section>
+
+      {/* --- NEW INTERIOR SECTION: EXPANDING ACCORDION GALLERY --- */}
+      <section className="py-24 bg-[#0B2E33] relative z-20 overflow-hidden">
+        {/* Background glow effects */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#bf953f]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#4F7C82]/20 rounded-full blur-[150px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h4 className="text-[#bf953f] font-bold uppercase tracking-[0.2em] mb-4">Inside The Spaces</h4>
+            <h1 className="text-4xl md:text-5xl font-bold text-white">Interior Styling</h1>
+          </div>
+
+          {/* Interactive Accordion Container - using flex-grow logic for perfect 5 divisions */}
+          <div className="flex flex-col lg:flex-row h-[70vh] min-h-[500px] w-full gap-2 transition-all duration-500 rounded-3xl overflow-hidden p-2 bg-white/5 border border-white/10 backdrop-blur-sm">
+            
+            {interiorItems.map((item) => (
+              <div
+                key={item.id}
+                onMouseEnter={() => setHoveredInterior(item.id)}
+                // We use flex grow ratios. The hovered item takes up '6' parts, the others take '1' part each.
+                // 6 + 1 + 1 + 1 + 1 = 10 parts total. This ensures 100% width is ALWAYS perfectly distributed.
+                className={`relative overflow-hidden min-w-0 min-h-0 rounded-2xl transition-all duration-700 ease-out cursor-pointer ${
+                  hoveredInterior === item.id 
+                    ? 'flex-[6]' 
+                    : 'flex-[1] opacity-70 hover:opacity-100'
+                }`}
+              >
+                {/* Media Layer */}
+                <div className="absolute inset-0 w-full h-full bg-black">
+                  {item.type === 'image' ? (
+                    <img 
+                      src={item.src} 
+                      alt={item.title} 
+                      className={`w-full h-full object-cover transition-transform duration-[2000ms] ${hoveredInterior === item.id ? 'scale-105' : 'scale-100'}`} 
+                    />
+                  ) : (
+                    <video 
+                      src={item.src} 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      className={`w-full h-full object-cover transition-transform duration-[2000ms] ${hoveredInterior === item.id ? 'scale-105' : 'scale-100'}`} 
+                    />
+                  )}
+                </div>
+
+                {/* Gradients to ensure text readability */}
+                <div className={`absolute inset-0 transition-opacity duration-500 ${hoveredInterior === item.id ? 'bg-gradient-to-t from-black/80 via-black/20 to-transparent' : 'bg-black/50'}`}></div>
+
+                {/* Vertical Text (Visible when NOT hovered) */}
+                <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${hoveredInterior === item.id ? 'opacity-0 delay-0' : 'opacity-100 delay-300'}`}>
+                   <h3 className="text-white font-bold tracking-widest uppercase lg:-rotate-90 whitespace-nowrap text-lg shadow-black drop-shadow-xl">
+                      {item.type === 'video' ? 'Walkthrough' : 'View Space'}
+                   </h3>
+                </div>
+
+                {/* Expanded Details (Visible when hovered) */}
+                <div className={`absolute bottom-0 left-0 p-6 md:p-10 w-full transition-all duration-500 flex flex-col justify-end h-full ${hoveredInterior === item.id ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-10'}`}>
+                  <motion.div 
+                    initial={false}
+                    animate={hoveredInterior === item.id ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {item.type === 'video' && (
+                      <div className="w-12 h-12 rounded-full bg-[#bf953f] flex items-center justify-center mb-4">
+                        <Play className="text-[#0B2E33] w-5 h-5 ml-1" />
+                      </div>
+                    )}
+                    <p className="text-[#bf953f] font-bold uppercase tracking-[0.2em] mb-2 drop-shadow-md">{item.subtitle}</p>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight drop-shadow-lg whitespace-nowrap">{item.title}</h2>
+                  </motion.div>
+                </div>
+
+              </div>
+            ))}
+
+          </div>
         </div>
       </section>
 

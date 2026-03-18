@@ -33,8 +33,8 @@ const projectsData = [
   {
     id: 2,
     title: "Hirekalmatha Hospital & School",
-    category: "institutional",
-    displayCategory: "Institutional",
+    category: "commercial",
+    displayCategory: "Commercial",
     location: "Honnali, Davanagere",
     area: "200,000+ sq.ft",
     year: "2024",
@@ -72,8 +72,8 @@ const projectsData = [
   {
     id: 4,
     title: "Educational Campus Design",
-    category: "institutional",
-    displayCategory: "Institutional",
+    category: "commercial",
+    displayCategory: "Commercial",
     location: "Mangalore, Karnataka",
     area: "25,000 sq.ft",
     year: "2023",
@@ -83,6 +83,32 @@ const projectsData = [
       "img/project/Educational/3.jpeg",
       "img/project/Educational/1.png",
       "img/project/Educational/2.png"
+    ]
+  },
+  {
+    id: 5,
+    title: "Mythology Park",
+    category: "commercial",
+    displayCategory: "Commercial",
+    location: "Ramaneshwaram",
+    area: "Large Scale Public Space",
+    year: "Ongoing",
+    description: "Designed for Bendakaluru Housing Private Limited (BHPL), Mythology Park at Ramaneshwaram integrates vernacular and modern architecture. The site features modular earth units, vast interconnected woven bamboo canopies, and a central hybrid meditation spire.",
+    mainImage: "img/project/mythology/m3.png", 
+    images: [
+      "img/project/mythology/m1.png",      
+      "img/project/mythology/m2.png", 
+      "img/project/mythology/m3.png",      
+      "img/project/mythology/m4.png",   
+      "img/project/mythology/m5.png",
+      "img/project/mythology/Real estate.png",
+      "img/project/mythology/m9.png",
+      "img/project/mythology/m6.png",
+      "img/project/mythology/m7.png",
+      "img/project/mythology/m8.png",
+      "img/project/mythology/m10.png",
+      "img/project/mythology/m11.png",
+      "img/project/mythology/m12.png"
     ]
   }
 ];
@@ -102,8 +128,6 @@ const VideoSection = () => {
   const handlePause = () => {
     setIsPlaying(false);
   };
-
-   
 
   return (
     <section className="relative w-full h-[80vh] md:h-screen bg-[#0B2E33] overflow-hidden group rounded-t-[3rem] mt-20 shadow-2xl">
@@ -162,6 +186,9 @@ const Project = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Find the Mythology project to feature it
+  const mythologyProject = projectsData.find(p => p.id === 5);
+
   // --- GSAP ANIMATIONS ---
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -211,11 +238,11 @@ const Project = () => {
     : projectsData.filter(project => project.category === filter);
 
   const tabs = [
-                { id: 1, label: "01. Master Plan - Zoning", img: "/Geotechnical/project1.png"},
-                { id: 2, label: "02. Form Development", img:  "/Geotechnical/project2.png" },
-                { id: 3, label: "03. Survey Plan", img:  "/Geotechnical/project3.png" },
-                { id: 4, label: "04. Concept Design", img:  "/Geotechnical/project4.png" }
-              ]
+    { id: 1, label: "01. Master Plan - Zoning", img: "/Geotechnical/project1.png"},
+    { id: 2, label: "02. Form Development", img:  "/Geotechnical/project2.png" },
+    { id: 3, label: "03. Survey Plan", img:  "/Geotechnical/project3.png" },
+    { id: 4, label: "04. Concept Design", img:  "/Geotechnical/project4.png" }
+  ];
 
   const activeTabData = tabs.find(tab => tab.id===activeTab);
 
@@ -272,6 +299,93 @@ const Project = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* --- FEATURED SPOTLIGHT SECTION (MYTHOLOGY PARK) --- */}
+      {mythologyProject && (
+        <section className="py-24 relative z-20 bg-[#0B2E33] rounded-b-[3rem] shadow-2xl overflow-hidden">
+          <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center gap-16">
+              
+              {/* Text Content */}
+              <div className="lg:w-1/2 text-white">
+                
+        
+                <h2 className="text-5xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B8E3E9]">
+                  {mythologyProject.title}
+                </h2>
+                
+                <p className="text-[#B8E3E9]/80 text-lg leading-relaxed mb-8 max-w-xl">
+                  {mythologyProject.description}
+                </p>
+                
+                <div className="flex items-center gap-8 mb-10">
+                  <div>
+                    <p className="text-[#bf953f] text-sm uppercase tracking-wider mb-1">Location</p>
+                    <p className="font-semibold text-lg">{mythologyProject.location}</p>
+                  </div>
+                  <div className="w-px h-12 bg-white/20"></div>
+                  <div>
+                    <p className="text-[#bf953f] text-sm uppercase tracking-wider mb-1">Scale</p>
+                    <p className="font-semibold text-lg">{mythologyProject.area}</p>
+                  </div>
+                </div>
+
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => openModal(mythologyProject)}
+                  className="px-8 py-4 bg-gradient-to-r from-[#bf953f] to-[#b38728] text-[#0B2E33] font-bold rounded-full shadow-[0_10px_30px_rgba(191,149,63,0.3)] flex items-center gap-3 group"
+                >
+                  View Full Gallery 
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </div>
+
+              {/* Staggered Image Glimpses */}
+              <div className="lg:w-1/2 w-full">
+                <div className="grid grid-cols-2 gap-4 md:gap-6 items-center">
+                  <div className="space-y-4 md:space-y-6 translate-y-8">
+                    {/* Image 1 */}
+                    <div className="rounded-3xl overflow-hidden shadow-2xl h-48 md:h-64 border border-white/10 relative group">
+                      <img src={mythologyProject.images[0]} alt="Glimpse 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-[#0B2E33]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    {/* Image 2 */}
+                    <div className="rounded-3xl overflow-hidden shadow-2xl h-64 md:h-80 border border-white/10 relative group">
+                      <img src={mythologyProject.images[1]} alt="Glimpse 2" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-[#0B2E33]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4 md:space-y-6 -translate-y-8">
+                    {/* Image 3 */}
+                    <div className="rounded-3xl overflow-hidden shadow-2xl h-64 md:h-80 border border-white/10 relative group">
+                      <img src={mythologyProject.images[2]} alt="Glimpse 3" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-[#0B2E33]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    {/* Image 4 */}
+                    <div className="rounded-3xl overflow-hidden shadow-2xl h-48 md:h-64 border border-white/10 relative group bg-[#bf953f]/20 flex items-center justify-center cursor-pointer" onClick={() => openModal(mythologyProject)}>
+                      {mythologyProject.images[3] ? (
+                        <>
+                          <img src={mythologyProject.images[3]} alt="Glimpse 4" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full font-bold shadow-lg border border-white/30">+ See All</span>
+                          </div>
+                        </>
+                      ) : (
+                        <span className="text-white font-bold">+ See All</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* --- PLANNING TABS SECTION --- */}
       <section className="py-24 relative z-20">
@@ -360,7 +474,7 @@ const Project = () => {
 
           {/* Filters */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {['all', 'residential', 'institutional'].map((cat) => (
+            {['all', 'residential','commercial'].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}

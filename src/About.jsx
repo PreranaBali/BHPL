@@ -235,8 +235,9 @@ const About = () => {
                 { img: "santhosh.jpg", name: "Mr. SanthoshKumar S", role: "South Indian Sales" },
                 { img: "gopi.png", name: "Mr. Gopi Tanniru", role: "Civil Engineer" },
                 { img: "SavithaAjith.png", name: "Mrs. SavithaAjith", role: "Architect(BE)" },
-                { img: "praveen.jpg", name: "Mr. Praveen Kumar", role: "Site Engineer" },
-                { img: "john sir.svg", name: "Mr. John", role: "North Karnataka Sales" },
+                { img: "manjunath swamy.jpeg", name: "Mr. Manjunath Swamy", role: "Tamil Nadu Head" },
+                { img: "Akhilesh.png", name: "Mr. Akhilesh B A", role: "Bengaluru Head" },
+                { img: "", name: "Mr. Yaseen ", role: "Shivamogga Head" },
             ].map((member, index) => (
                <motion.div 
                  key={index}

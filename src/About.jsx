@@ -237,7 +237,7 @@ const About = () => {
                 { img: "SavithaAjith.png", name: "Mrs. SavithaAjith", role: "Architect(BE)" },
                 { img: "manjunath swamy.jpeg", name: "Mr. Manjunath Swamy", role: "Tamil Nadu Head" },
                 { img: "Akhilesh.png", name: "Mr. Akhilesh B A", role: "Bengaluru Head" },
-                { img: "yaseena.png", name: "Mr. Yaseen ", role: "Shivamogga Head" },
+                { img: "y.jpeg", name: "Mr. Yaseen ", role: "Shivamogga Head" },
             ].map((member, index) => (
                <motion.div 
                  key={index}

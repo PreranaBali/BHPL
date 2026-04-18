@@ -232,7 +232,7 @@ const About = () => {
             className="flex flex-wrap justify-center gap-6 md:gap-8"
           >
             {[
-                { img: "santhosh.jpg", name: "Mr. SanthoshKumar S", role: "South Indian Sales" },
+                { img: "santhosh.jpg", name: "Mr. SanthoshKumar S", role: "South India Coordinator" },
                 { img: "gopi.png", name: "Mr. Gopi Tanniru", role: "Civil Engineer" },
                 { img: "SavithaAjith.png", name: "Mrs. SavithaAjith", role: "Architect(BE)" },
                 { img: "manjunath swamy.jpeg", name: "Mr. Manjunath Swamy", role: "Tamil Nadu Head" },
